@@ -367,7 +367,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-20 04:54:01" itemprop="dateModified" datetime="2018-08-20T04:54:01Z">2018-08-20</time>
+                <time title="修改时间：2018-08-21 09:06:18" itemprop="dateModified" datetime="2018-08-21T09:06:18Z">2018-08-21</time>
               
             
           </span>
@@ -405,7 +405,7 @@
             <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="单线程的JavaScript"><a href="#单线程的JavaScript" class="headerlink" title="单线程的JavaScript"></a>单线程的JavaScript</h2><p>JavaScript作为浏览器脚本语言，主要用途是和操作DOM以及与用户互动。在操作DOM时，多线程很容易造成命令的矛盾（比如一个线程删除DOM，一个增加DOM），所以JavaScript被设计成单线程。</p>
 <h2 id="需要异步的JavaScript"><a href="#需要异步的JavaScript" class="headerlink" title="需要异步的JavaScript"></a>需要异步的JavaScript</h2><p>由于JavaScript的单线程特性，如果只能同步执行，如果遇到耗时的任务，就会对后续任务造成阻塞，所以JavaScript需要存在异步执行。</p>
 <hr>
-<h1 id="概念辨析"><a href="#概念辨析" class="headerlink" title="概念辨析"></a>概念辨析</h1><h2 id="异步、并行、并发"><a href="#异步、并行、并发" class="headerlink" title="异步、并行、并发"></a>异步、并行、并发</h2><ul>
+<h1 id="概念辨析"><a href="#概念辨析" class="headerlink" title="概念辨析"></a>概念辨析</h1><ul>
 <li>异步：着眼点是现在运行的部分与将来运行的部分。是把耗时的部分挂起，等I/O设备（或者其他事件）返回了结果，再通过回调函数继续执行下去。</li>
 <li>并行：并行是多线程同时发生。异步和并行都会造成一定程度的不确定性，但是异步会造成函数级别的不确定（函数顺序改变），而并行会造成语句级别的不确定性。</li>
 <li>并发：并发指的是任务级别的并行，就是两个任务中的每个步骤穿插进行。<blockquote>
@@ -417,23 +417,40 @@
 <h1 id="JavaScript的执行机制"><a href="#JavaScript的执行机制" class="headerlink" title="JavaScript的执行机制"></a>JavaScript的执行机制</h1><h2 id="执行机制"><a href="#执行机制" class="headerlink" title="执行机制"></a>执行机制</h2><p>所有任务可以分成两种：一种是同步任务（synchronous），另一种是异步任务（asynchronous）。</p>
 <ul>
 <li>同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；</li>
-<li>异步任务指的是，不进入主线程、而进入<strong>任务队列</strong>（task queue）的任务，只有”任务队列”通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。所以，执行栈中的代码（同步任务），总是在读取”任务队列”（异步任务）之前执行。如下代码，输出的结果为2，1：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">console.log(1);</span><br><span class="line">&#125;,0);</span><br><span class="line">console.log(2);</span><br></pre></td></tr></table></figure>
-</li>
+<li>异步任务指的是，不进入主线程、而进入<strong>任务队列</strong>（task queue）的任务，只有”任务队列”通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。所以，执行栈中的代码（同步任务），总是在读取”任务队列”（异步任务）之前执行。如下代码，输出的结果为2，1：</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">&#125;,0);</span><br><span class="line">console.log(2);</span><br></pre></td></tr></table></figure>
 <p>JavaScript具体完整的执行步骤如下：</p>
 <ol>
 <li>所有同步任务在主线程上执行，形成一个执行栈。</li>
 <li>异步任务由相应的I/O设备（或其他事件）执行，一旦有了执行结果，就把这个异步事件放入任务队列。</li>
 <li>一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</li>
-<li>主线程不断重复上面的第三步。<h2 id="执行机制中涉及到的重要概念"><a href="#执行机制中涉及到的重要概念" class="headerlink" title="执行机制中涉及到的重要概念"></a>执行机制中涉及到的重要概念</h2></li>
+<li>主线程不断重复上面的第三步。</li>
 </ol>
-<ul>
+<h2 id="执行机制中涉及到的重要概念"><a href="#执行机制中涉及到的重要概念" class="headerlink" title="执行机制中涉及到的重要概念"></a>执行机制中涉及到的重要概念</h2><ul>
 <li>运行机制：只要主线程空了，就会去读取”任务队列”，这就是<strong>JavaScript的运行机制</strong>。</li>
 <li>事件循环（Event Loop）：以上过程会不断重复。主线程从<strong>任务队列</strong>中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为事件循环。</li>
 <li>回调函数（callback）：就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。</li>
 </ul>
 <hr>
-<h1 id="异步模式"><a href="#异步模式" class="headerlink" title="异步模式"></a>异步模式</h1><h2 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h2><h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><h2 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布/订阅"></a>发布/订阅</h2><h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2>
+<h1 id="异步模式"><a href="#异步模式" class="headerlink" title="异步模式"></a>异步模式</h1><h2 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h2><h3 id="理解这种思维"><a href="#理解这种思维" class="headerlink" title="理解这种思维"></a>理解这种思维</h3><p>回调是JavaScript中最基础的异步模式，学完感觉这么简单起了个难理解的名字……翻译的锅。前几天看到一个视频，借助讲解Ajax的机会介绍了回调，感觉讲解的很清晰。首先，我们尝试对Ajax进行封装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function ajax(method,url) &#123;</span><br><span class="line">    var xhr = new XMLHTTPRequest();</span><br><span class="line">    xhr.open(method,url);</span><br><span class="line">    xhr.send();</span><br><span class="line">    xhr.onreadystatechange = function()&#123;</span><br><span class="line">        if(this.readyState != 4) return;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如上所示，只写出了简单代码，略去其中的复杂细节。如果想调用ajax()函数获得获取到了数据，我们肯定会先考虑利用return，于是尝试更改代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function ajax(method,url) &#123;</span><br><span class="line">    var xhr = new XMLHTTPRequest();</span><br><span class="line">    var result = null;</span><br><span class="line">    xhr.open(method,url);</span><br><span class="line">    xhr.send();</span><br><span class="line">    xhr.onreadystatechange = function()&#123;</span><br><span class="line">        if(this.readyState != 4) return;</span><br><span class="line">        result = this.responseText;</span><br><span class="line">    &#125;</span><br><span class="line">    return retult;</span><br><span class="line">&#125;</span><br><span class="line">var response = ajax(&apos;get&apos;,&apos;某网址&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>如上代码，得到的response结果是null，因为上文中提到，同步任务总是先于异步任务执行，所以return语句总是在事件监听语句执行前就执行结束了。所以，永远无法通过return获得上述ajax函数的返回值！那么，调用者只能换个方法执行自己想做的事了，那就是通过传递函数，把自己想做的事告诉封装者，让封装者在接收到数据后执行传入的函数内容，示例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function ajax(method,url,done) &#123;</span><br><span class="line">    var xhr = new XMLHTTPRequest();</span><br><span class="line">    xhr.open(method,url);</span><br><span class="line">    xhr.send();</span><br><span class="line">    xhr.onreadystatechange = function()&#123;</span><br><span class="line">        if(this.readyState != 4) return;</span><br><span class="line">        done(this.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ajax(&apos;get&apos;,&apos;某网址&apos;,function(response)&#123;</span><br><span class="line">    console.log(response);</span><br><span class="line">    console.log(&apos;做完啦&apos;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>如上所示，在调用ajax函数时，传入一个匿名函数，让封装者执行。这就是回调函数的思维。我认为理解这种思维，比只看定义要重要得多。</p>
+<h3 id="回调函数的优缺点"><a href="#回调函数的优缺点" class="headerlink" title="回调函数的优缺点"></a>回调函数的优缺点</h3><ul>
+<li>优点：简单，容易理解和部署。</li>
+<li>缺点：缺乏顺序性和可信任性，耦合度高。缺乏顺序性容易理解，缺乏可信任性可以结合上述例子进行理解。在上述例子中，调用者把需要进行的函数传递给封装者执行，但是调用者不知道封装者是否可信任，因为封装函数一般是别人写的，其中可能有各种错误，不一定能正确执行传入的函数，这就是可信任性的缺乏。为了解决这个问题，还是由调用者来进行接下来的步骤比较妥帖，由此产生了ES6中的promise。</li>
+</ul>
+<p>例如，如果我们需要请求完A后请求B，B完成后请求C……就会产生这种情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ajax(&apos;A&apos;,function()&#123;</span><br><span class="line">    ajax(&apos;B&apos;,function()&#123;</span><br><span class="line">        ajax(&apos;C&apos;,function()&#123;</span><br><span class="line">            ......</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>观察上述代码，可以看出，代码高度耦合，并且复杂度高，不利于理解与预测，有待优化。</p>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>另一种思路是采用事件驱动模式。任务的执行不取决于代码的顺序，而取决于某个事件是否发生。这个比较容易简单，就不详细展开了。这种方法的优点是比较容易理解，可以绑定多个事件，每个事件可以指定多个回调函数，而且可以”去耦合”（Decoupling），有利于实现模块化。缺点是整个程序都要变成事件驱动型，运行流程会变得很不清晰。</p>
+<h2 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布/订阅"></a>发布/订阅</h2><p>我们假定，存在一个”信号中心”，某个任务执行完成，就向信号中心”发布”（publish）一个信号，其他任务可以向信号中心”订阅”（subscribe）这个信号，从而知道什么时候自己可以开始执行。这就叫做”发布/订阅模式”（publish-subscribe pattern），又称”观察者模式”（observer pattern）。这种方法的性质与”事件监听”类似，但是明显优于后者。因为我们可以通过查看”消息中心”，了解存在多少信号、每个信号有多少订阅者，从而监控程序的运行。</p>
+<blockquote>
+<p>这种方法属于设计模式的一种，在《JavaScript设计模式与开发实践》有所介绍，需要详细学习。</p>
+</blockquote>
+<h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><p>Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用（proxy），充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。Promise 可以让异步操作写起来，就像在写同步操作的流程，而不必一层层地嵌套回调函数。Promise 是一个对象，也是一个构造函数。Promise 的设计思想是，所有异步任务都返回一个 Promise 实例。Promise 实例有一个then方法，用来指定下一步的回调函数。Promise使异步操作变成了链式写法，不仅改善了可读性，而且对于多层嵌套的回调函数尤其方便，例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 传统写法</span><br><span class="line">step1(function (value1) &#123;</span><br><span class="line">    step2(value1, function(value2) &#123;</span><br><span class="line">        step3(value2, function(value3) &#123;</span><br><span class="line">            step4(value3, function(value4) &#123;</span><br><span class="line">                // ...</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// Promise 的写法</span><br><span class="line">(new Promise(step1))</span><br><span class="line">.then(step2)</span><br><span class="line">.then(step3)</span><br><span class="line">.then(step4);</span><br></pre></td></tr></table></figure></p>
+<p>上述代码直接摘自阮大神的教程。从上面代码可以看到，采用 Promises 以后，程序流程变得非常清楚，十分易读。总的来说，传统的回调函数写法使得代码混成一团，变得横向发展而不是向下发展。Promise 就是解决这个问题，使得异步流程可以写成同步流程。<br>有关promise的具体语法就不在这赘述了。</p>
+
           
         
       
