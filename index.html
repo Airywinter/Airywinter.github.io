@@ -367,7 +367,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-21 09:06:18" itemprop="dateModified" datetime="2018-08-21T09:06:18Z">2018-08-21</time>
+                <time title="修改时间：2018-08-21 09:37:43" itemprop="dateModified" datetime="2018-08-21T09:37:43Z">2018-08-21</time>
               
             
           </span>
@@ -449,7 +449,8 @@
 <p>这种方法属于设计模式的一种，在《JavaScript设计模式与开发实践》有所介绍，需要详细学习。</p>
 </blockquote>
 <h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><p>Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用（proxy），充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。Promise 可以让异步操作写起来，就像在写同步操作的流程，而不必一层层地嵌套回调函数。Promise 是一个对象，也是一个构造函数。Promise 的设计思想是，所有异步任务都返回一个 Promise 实例。Promise 实例有一个then方法，用来指定下一步的回调函数。Promise使异步操作变成了链式写法，不仅改善了可读性，而且对于多层嵌套的回调函数尤其方便，例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 传统写法</span><br><span class="line">step1(function (value1) &#123;</span><br><span class="line">    step2(value1, function(value2) &#123;</span><br><span class="line">        step3(value2, function(value3) &#123;</span><br><span class="line">            step4(value3, function(value4) &#123;</span><br><span class="line">                // ...</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// Promise 的写法</span><br><span class="line">(new Promise(step1))</span><br><span class="line">.then(step2)</span><br><span class="line">.then(step3)</span><br><span class="line">.then(step4);</span><br></pre></td></tr></table></figure></p>
-<p>上述代码直接摘自阮大神的教程。从上面代码可以看到，采用 Promises 以后，程序流程变得非常清楚，十分易读。总的来说，传统的回调函数写法使得代码混成一团，变得横向发展而不是向下发展。Promise 就是解决这个问题，使得异步流程可以写成同步流程。<br>有关promise的具体语法就不在这赘述了。</p>
+<p>上述代码直接摘自阮大神的教程。从上面代码可以看到，采用 Promises 以后，程序流程变得非常清楚，十分易读。总的来说，传统的回调函数写法使得代码混成一团，变得横向发展而不是向下发展。Promise 就是解决这个问题，使得异步流程可以写成同步流程。<br>有关promise的具体语法就不在这赘述了。有一点需要注意：Promise 的回调函数不是正常的异步任务，而是微任务（microtask）。它们的区别在于，正常任务追加到下一轮事件循环，微任务追加到本轮事件循环。这意味着，微任务的执行时间一定早于正常任务。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function() &#123;</span><br><span class="line">console.log(1);</span><br><span class="line">&#125;, 0);</span><br><span class="line">new Promise(function (resolve, reject) &#123;</span><br><span class="line">resolve(2);</span><br><span class="line">&#125;).then(console.log);</span><br><span class="line">console.log(3);</span><br></pre></td></tr></table></figure></p>
+<p>上述代码的输出结果为3、2、1，这说明then的回调函数的执行时间，早于setTimeout(fn, 0)。因为then是本轮事件循环执行，setTimeout(fn, 0)在下一轮事件循环开始时执行。</p>
 
           
         
