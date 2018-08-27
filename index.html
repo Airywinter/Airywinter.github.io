@@ -304,6 +304,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/作用域和闭包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="如果你发现自己还没有做到，我希望，你有勇气重头再来。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的精神家园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/27/作用域和闭包/" itemprop="url">
+                  作用域和闭包
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-27 15:52:45 / 修改时间：15:56:28" itemprop="dateCreated datePublished" datetime="2018-08-27T15:52:45Z">2018-08-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参考《你不知道的JavaScript（上卷）》</p>
+</blockquote>
+<h1 id="理解作用域"><a href="#理解作用域" class="headerlink" title="理解作用域"></a>理解作用域</h1><h2 id="程序执行过程"><a href="#程序执行过程" class="headerlink" title="程序执行过程"></a>程序执行过程</h2><p>在代码执行的过程中，涉及到的三个部分分别是：引擎、编译器和作用域。</p>
+<ul>
+<li>引擎：从头到尾负责整个程序的编译及执行过程。</li>
+<li>编译器：负责语法分析及代码生成等。</li>
+<li>作用域：负责收集当前所有的变量，并确定访问权限。</li>
+</ul>
+<p>例如程序var a = 2;，在编译器编译时会判断当前作用域是否有这个变量，如果没有就声明它，运行时，引擎会在当前作用域寻找这个变量，如果找到了就进行赋值操作。引擎会对变量进行LHS和RHS查询，RHS查询就是简单地查找某个变量的值，而LHS查询则是试图找到变量容器本身，从而进行赋值操作。如果RHS查询失败，引擎就会抛出ReferenceError异常，如果LHS查询失败，就会在全局作用域中创建一个此变量，然后传给引擎进行赋值。</p>
+<blockquote>
+<p>ReferenceError异常指的是查询失败，而TypeError异常表示作用域判别成功了，但是对这个变量的操作是不合理的。</p>
+</blockquote>
+<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>作用域共有两种工作模式，分别为词法作用域和动态作用域，前者较为普遍。词法作用域是定义在词法阶段的作用域，也就是说，词法作用域是由你在写代码时将变量和块级作用域写在哪里来决定的。<br>有两种方法可以在运行过程中欺骗词法作用域，分别为：eval和with。不推荐使用，因为会降低性能。</p>
+<h2 id="函数作用域和块作用域"><a href="#函数作用域和块作用域" class="headerlink" title="函数作用域和块作用域"></a>函数作用域和块作用域</h2><p>避免命名冲突的方法：全局命名空间和模块管理，其中全局命名空间就是指，这些库通常会在全局作用域中声明一个名字足够独特的变量，通常是一个对象。这个对象被用作库的命名空间，所有需要暴露给外界的功能都会成为这个对象（命名空间）的属性，而不是将自己的标识符暴漏在顶级的词法作用域中。<br>区分函数表达式和函数声明的方法：判断function是不是第一个词（这里的词包括操作符，运算符，例如括号），如果是，那么就是一个函数声明，否则就是一个函数表达式。函数声明和函数表达式之间最重要的区别是它们的名称标识符将会绑定在何处。立即执行函数也是一个函数表达式。比较如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = 2;</span><br><span class="line">function foo() &#123; </span><br><span class="line">    var a = 3;</span><br><span class="line">    console.log( a ); // 3</span><br><span class="line">&#125; </span><br><span class="line">foo(); // </span><br><span class="line">console.log( a ); // 2</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function foo()&#123; // &lt;-- 添加这一行</span><br><span class="line">    var a = 3;</span><br><span class="line">    console.log( a ); // 3</span><br><span class="line">&#125;)(); // &lt;-- 以及这一行</span><br><span class="line">console.log( a ); // 2</span><br></pre></td></tr></table></figure>
+<p>比较一下前面两个代码片段。第一个片段中foo 被绑定在所在作用域中，可以直接通过foo() 来调用它。第二个片段中foo 被绑定在函数表达式自身的函数中而不是所在作用域中。换句话说，(function foo(){ .. }) 作为函数表达式意味着foo 只能在.. 所代表的位置中被访问，外部作用域则不行。foo 变量名被隐藏在自身中意味着不会非必要地污染外部作用域。<br>立即执行函数表达式：Immediately Invoked Function Expression，简称IIFE。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = 2;</span><br><span class="line">(function foo() &#123;</span><br><span class="line">    var a = 3;</span><br><span class="line">    console.log( a ); // 3</span><br><span class="line">&#125;)();</span><br><span class="line">console.log( a ); // 2</span><br></pre></td></tr></table></figure></p>
+<p>由于函数被包含在一对( ) 括号内部，因此成为了一个表达式，通过在末尾加上另外一个( ) 可以立即执行这个函数，比如(function foo(){ .. })()。第一个( ) 将函数变成表达式，第二个( ) 执行了这个函数。还有另一个改进的形式：(function(){ .. }())。第一种形式中函数表达式被包含在( ) 中，然后在后面用另一个( )括号来调用。第二种形式中用来调用的( ) 括号被移进了用来包装的( ) 括号中。功能一样。</p>
+<blockquote>
+<p>JavaScript中没有块级作用域，但是with、try/catch、let、const可以创建块级作用域。</p>
+</blockquote>
+<hr>
+<h1 id="提升"><a href="#提升" class="headerlink" title="提升"></a>提升</h1><p>包括变量和函数在内的所有声明都会在任何代码被执行前首先被处理。当你看到var a = 2; 时，可能会认为这是一个声明。但JavaScript 实际上会将其看成两个声明：var a; 和a = 2;。第一个定义声明是在编译阶段进行的。第二个赋值声明会被留在原地等待执行阶段。<br>函数声明和变量声明都会被提升（函数表达式不会）。但是一个值得注意的细节（这个细节可以出现在有多个“重复”声明的代码中）是函数会首先被提升，然后才是变量。重复的变量声明会被忽略，而后面的重名函数声明会覆盖前面的。</p>
+<hr>
+<h1 id="作用域闭包"><a href="#作用域闭包" class="headerlink" title="作用域闭包"></a>作用域闭包</h1><h2 id="了解闭包"><a href="#了解闭包" class="headerlink" title="了解闭包"></a>了解闭包</h2><p>当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。闭包的作用就是缓存数据，延长作用域链。举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">    var a = 2;</span><br><span class="line">    function bar() &#123;</span><br><span class="line">        console.log( a );</span><br><span class="line">    &#125;</span><br><span class="line">    return bar;</span><br><span class="line">&#125;</span><br><span class="line">var baz = foo();</span><br><span class="line">baz(); // 2 —— 朋友，这就是闭包的效果。</span><br></pre></td></tr></table></figure></p>
+<p>bar()显然可以被正常执行。但是在这个例子中，它在自己定义的词法作用域以外的地方执行。在foo() 执行后，通常会期待foo() 的整个内部作用域都被销毁，因为我们知道引擎有垃圾回收器用来释放不再使用的内存空间。由于看上去foo() 的内容不会再被使用，所以很自然地会考虑对其进行回收。<br>而闭包的“神奇”之处正是可以阻止这件事情的发生。事实上内部作用域依然存在，因此没有被回收。谁在使用这个内部作用域？原来是bar() 本身在使用。拜bar() 所声明的位置所赐，它拥有涵盖foo() 内部作用域的闭包，使得该作用域能够一直存活，以供bar() 在之后任何时间进行引用。<br>bar() 依然持有对该作用域的引用，而这个引用就叫作<strong>闭包</strong>。<br>再举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function wait(message) &#123;</span><br><span class="line">    setTimeout( function timer() &#123;</span><br><span class="line">        console.log( message );</span><br><span class="line">    &#125;, 1000 );</span><br><span class="line">&#125;</span><br><span class="line">wait( &quot;Hello, closure!&quot; );</span><br></pre></td></tr></table></figure></p>
+<p>将一个内部函数（名为timer）传递给setTimeout(..)。timer 具有涵盖wait(..) 作用域的闭包，因此还保有对变量message 的引用。wait(..) 执行1000 毫秒后，它的内部作用域并不会消失，timer 函数依然保有wait(..)作用域的闭包。<br>深入到引擎的内部原理中，内置的工具函数setTimeout(..) 持有对一个参数的引用，这个参数也许叫作fn 或者func，或者其他类似的名字。引擎会调用这个函数，在例子中就是内部的timer 函数，而词法作用域在这个过程中保持完整。<br><strong>这就是闭包。</strong></p>
+<h2 id="循环和闭包"><a href="#循环和闭包" class="headerlink" title="循环和闭包"></a>循环和闭包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (var i=1; i&lt;=5; i++) &#123;</span><br><span class="line">    setTimeout( function timer() &#123;</span><br><span class="line">        console.log( i );</span><br><span class="line">    &#125;, i*1000 );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码会输出5次6，究其原因是我们试图假设循环中的每个迭代在运行时都会给自己“捕获”一个i 的副本。但是根据作用域的工作原理，实际情况是尽管循环中的五个函数是在各个迭代中分别定义的，但是它们都被封闭在一个共享的全局作用域中，因此实际上只有一个i。所以，我们需要更多的闭包作用域，特别是在循环的过程中每个迭代都需要一个闭包作用域。改进：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (var i=1; i&lt;=5; i++) &#123;</span><br><span class="line">    (function(j) &#123;</span><br><span class="line">        setTimeout( function timer() &#123;</span><br><span class="line">            console.log( j );</span><br><span class="line">        &#125;, j*1000 );</span><br><span class="line">    &#125;)( i );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/26/原型与继承/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -692,7 +860,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
