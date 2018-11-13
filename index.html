@@ -296,6 +296,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/初级-数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="如果你发现自己还没有做到，我希望，你有勇气重头再来。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的精神家园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/14/初级-数组/" itemprop="url">
+                  初级-数组
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-13 21:05:14 / 修改时间：13:15:32" itemprop="dateCreated datePublished" datetime="2018-11-13T21:05:14Z">2018-11-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="从排序数组中删除重复项"><a href="#从排序数组中删除重复项" class="headerlink" title="从排序数组中删除重复项"></a>从排序数组中删除重复项</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var removeDuplicates = function(nums) &#123;</span><br><span class="line">    for(let i=0;i&lt;nums.length;i++)&#123;</span><br><span class="line">        let n = 0</span><br><span class="line">        for(let j=i+1;j&lt;nums.length;j++)&#123;</span><br><span class="line">            if(nums[i] == nums[j]) n++</span><br><span class="line">            else if(nums[i] != nums[j]) break</span><br><span class="line">        &#125;</span><br><span class="line">    nums.splice(i,n)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="买卖股票的最佳时机-II"><a href="#买卖股票的最佳时机-II" class="headerlink" title="买卖股票的最佳时机 II"></a>买卖股票的最佳时机 II</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var maxProfit = function(prices) &#123;</span><br><span class="line">    var n = 0</span><br><span class="line">    for(let i=0;i&lt;prices.length;i++)&#123;</span><br><span class="line">        var tof = false</span><br><span class="line">        for(var j=i+1;j&lt;prices.length;j++)&#123;</span><br><span class="line">            if(prices[i] &gt; prices[j])&#123;</span><br><span class="line">                tof = false</span><br><span class="line">                break</span><br><span class="line">            &#125; </span><br><span class="line">            else if(prices[j] &gt; prices[j+1])&#123;</span><br><span class="line">                tof = true</span><br><span class="line">                break</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(tof == true)&#123;</span><br><span class="line">            n = n + prices[j] - prices[i]</span><br><span class="line">            i = j</span><br><span class="line">        &#125;</span><br><span class="line">        else if(j == prices.length)&#123;</span><br><span class="line">            n = n + prices[j-1] - prices[i]</span><br><span class="line">            i = j</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return n</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="旋转数组"><a href="#旋转数组" class="headerlink" title="旋转数组"></a>旋转数组</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rotate = <span class="function"><span class="keyword">function</span>(<span class="params">nums, k</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(k &gt; nums.length) k = k - nums.length</span><br><span class="line"><span class="keyword">while</span>(k &gt; <span class="number">0</span>)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line"><span class="keyword">let</span> temp = nums[i]</span><br><span class="line">nums[i] = nums[<span class="number">0</span>]</span><br><span class="line">nums[<span class="number">0</span>] = temp</span><br><span class="line">&#125;</span><br><span class="line">k--</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="存在重复"><a href="#存在重复" class="headerlink" title="存在重复"></a>存在重复</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var containsDuplicate = function(nums) &#123;</span><br><span class="line">var obj = &#123;&#125;</span><br><span class="line">var n = false</span><br><span class="line">for(let i=0;i&lt;nums.length;i++) &#123;</span><br><span class="line">if(nums[i] in obj) obj[nums[i]]++</span><br><span class="line">else obj[nums[i]] = 1</span><br><span class="line">&#125;</span><br><span class="line">for(key in obj) &#123;</span><br><span class="line">if(obj[key] &gt; 1) n = true</span><br><span class="line">&#125;</span><br><span class="line">return n</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="只出现一次的数字"><a href="#只出现一次的数字" class="headerlink" title="只出现一次的数字"></a>只出现一次的数字</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var singleNumber = function(nums) &#123;</span><br><span class="line">var n = 0</span><br><span class="line">for(let i=0;i&lt;nums.length;i++) &#123;</span><br><span class="line">var a = true</span><br><span class="line">for(var j=i+1;j&lt;nums.length;j++) &#123;</span><br><span class="line">if(nums[i] == nums[j]) &#123;</span><br><span class="line">a = false</span><br><span class="line">nums.splice(j,1)</span><br><span class="line">break</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">if(j == nums.length &amp;&amp; a == true) &#123;</span><br><span class="line">n = nums[i]</span><br><span class="line">break</span><br><span class="line">&#125;</span><br><span class="line">else if(i == nums.length-1) &#123;</span><br><span class="line">n = nums[i]</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return n</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="两个数组的交集-II"><a href="#两个数组的交集-II" class="headerlink" title="两个数组的交集 II"></a>两个数组的交集 II</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var intersect = function(nums1, nums2) &#123;</span><br><span class="line">var arr =[]</span><br><span class="line">var k = 0</span><br><span class="line">if(nums1.length &lt; nums2.length) &#123;</span><br><span class="line">[nums1,nums2] = [nums2,nums1]</span><br><span class="line">&#125;</span><br><span class="line">for(let i=0;i&lt;nums2.length;i++) &#123;</span><br><span class="line">for(let j=0;j&lt;nums1.length;j++) &#123;</span><br><span class="line">if(nums2[i] == nums1[j]) &#123;</span><br><span class="line">arr[k++] = nums2[i]</span><br><span class="line">nums1.splice(j, 1)</span><br><span class="line">break</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return arr</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var plusOne = function(digits) &#123;</span><br><span class="line">var n = false</span><br><span class="line">digits[digits.length - 1] += 1</span><br><span class="line">for(let i=digits.length-1;i&gt;-1;i--) &#123;</span><br><span class="line">if(n == true) &#123;</span><br><span class="line">digits[i] += 1</span><br><span class="line">n = false</span><br><span class="line">&#125;</span><br><span class="line">if(digits[i] == 10) &#123;</span><br><span class="line">digits[i] = 0</span><br><span class="line">n = true</span><br><span class="line">&#125;</span><br><span class="line">if(n == true &amp;&amp; i == 0) &#123;</span><br><span class="line">digits.length += 1</span><br><span class="line">for(let i=digits.length-1;i&gt;-1;i--) &#123;</span><br><span class="line">digits[i] = digits[i-1]</span><br><span class="line">&#125;</span><br><span class="line">digits[0] = 1</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return digits</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="移动零"><a href="#移动零" class="headerlink" title="移动零"></a>移动零</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var moveZeroes = function(nums) &#123;</span><br><span class="line">var initLength = nums.length</span><br><span class="line">var dLength = nums.length</span><br><span class="line">for(let i=0;i&lt;dLength;i++) &#123;</span><br><span class="line">if(nums[i] == 0) &#123;</span><br><span class="line">nums.splice(i,1)</span><br><span class="line">nums[initLength-1] = 0</span><br><span class="line">dLength--</span><br><span class="line">i--</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var twoSum = function(nums, target) &#123;</span><br><span class="line">for(var i=0;i&lt;nums.length;i++) &#123;</span><br><span class="line">var boo = false</span><br><span class="line">var n = target - nums[i]</span><br><span class="line">for(var j=i+1;j&lt;nums.length;j++) &#123;</span><br><span class="line">if(nums[j] == n) &#123;</span><br><span class="line">boo = true</span><br><span class="line">break</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">if(boo == true) break</span><br><span class="line">&#125;</span><br><span class="line">return [i,j]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="有效的数独"><a href="#有效的数独" class="headerlink" title="有效的数独"></a>有效的数独</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">var containsDuplicate = function(nums,boo) &#123;</span><br><span class="line">var obj = &#123;&#125;</span><br><span class="line">for(let i=0;i&lt;nums.length;i++) &#123;</span><br><span class="line">if(nums[i] in obj) obj[nums[i]]++</span><br><span class="line">else obj[nums[i]] = 1</span><br><span class="line">&#125;</span><br><span class="line">for(key in obj) &#123;</span><br><span class="line">if(obj[key] &gt; 1 &amp;&amp; key != &apos;.&apos;) boo = false</span><br><span class="line">&#125;</span><br><span class="line">return boo</span><br><span class="line">&#125;;</span><br><span class="line">var isValidSudoku = function(board) &#123;</span><br><span class="line">var boo = true</span><br><span class="line">for(var i=0;i&lt;9;i++) &#123;</span><br><span class="line">boo = containsDuplicate(board[i],boo)//横向判断</span><br><span class="line">var arr1 = []</span><br><span class="line">var arr2 = []</span><br><span class="line">for(let j=0;j&lt;9;j++) &#123;</span><br><span class="line">arr1.push(board[j][i])</span><br><span class="line">&#125;</span><br><span class="line">for(let j=0;j&lt;9;j++) &#123;//最难的就是下面这两部转换....</span><br><span class="line">var cubeX = parseInt(3 * parseInt(i/3) + parseInt(j/3))</span><br><span class="line">var cubeY = parseInt(3 * (i%3) + j%3)</span><br><span class="line">arr2.push(board[cubeX][cubeY])</span><br><span class="line">&#125;</span><br><span class="line">boo = containsDuplicate(arr1,boo)//纵向判断，把纵向数字放进一个数组里</span><br><span class="line">boo = containsDuplicate(arr2,boo)//判断小九宫格</span><br><span class="line">&#125;</span><br><span class="line">return boo</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="旋转图像"><a href="#旋转图像" class="headerlink" title="旋转图像"></a>旋转图像</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var rotate = function(matrix) &#123;</span><br><span class="line">var x = matrix.length</span><br><span class="line">var y = matrix.length - 1//每一行比上一行少交换一个，考虑对角线格式</span><br><span class="line">for(let i=0;i&lt;x-1;i++) &#123;//对角互换</span><br><span class="line">let z = y//每次要求与之交换的坐标，要加的数字每次需要变化</span><br><span class="line">for(let j=0;j&lt;y;j++) &#123;</span><br><span class="line">let temp = matrix[i][j]</span><br><span class="line">matrix[i][j] = matrix[i+z][j+z]</span><br><span class="line">matrix[i+z][j+z] = temp</span><br><span class="line">z--</span><br><span class="line">&#125;</span><br><span class="line">y--</span><br><span class="line">&#125;</span><br><span class="line">console.log(parseInt(matrix.length/2))</span><br><span class="line">for(let i=0;i&lt;parseInt(matrix.length/2);i++) &#123;//上下对称互换</span><br><span class="line">for(let j=0;j&lt;matrix.length;j++) &#123;</span><br><span class="line">let temp = matrix[i][j]</span><br><span class="line">matrix[i][j] = matrix[matrix.length-1-i][j]</span><br><span class="line">matrix[matrix.length-1-i][j] = temp</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/13/同源策略/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1667,7 +1835,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1684,7 +1852,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
