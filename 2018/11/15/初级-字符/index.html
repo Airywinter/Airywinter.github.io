@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="反转字符123456var reverseString = function(s) &amp;#123;    var arr = s.split(&apos;&apos;)    arr.reverse()    s = arr.join(&apos;&apos;)    return s&amp;#125;; 颠倒整数123456789101112131415var reverse = function(x) &amp;#123;    x = x.toS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级-字符">
+<meta property="og:url" content="http://yoursite.com/2018/11/15/初级-字符/index.html">
+<meta property="og:site_name" content="我的精神家园">
+<meta property="og:description" content="反转字符123456var reverseString = function(s) &amp;#123;    var arr = s.split(&apos;&apos;)    arr.reverse()    s = arr.join(&apos;&apos;)    return s&amp;#125;; 颠倒整数123456789101112131415var reverse = function(x) &amp;#123;    x = x.toS">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-14T09:34:23.759Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初级-字符">
+<meta name="twitter:description" content="反转字符123456var reverseString = function(s) &amp;#123;    var arr = s.split(&apos;&apos;)    arr.reverse()    s = arr.join(&apos;&apos;)    return s&amp;#125;; 颠倒整数123456789101112131415var reverse = function(x) &amp;#123;    x = x.toS">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/15/初级-字符/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>初级-字符 | 我的精神家园</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我的精神家园</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/初级-字符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Airy">
+      <meta itemprop="description" content="如果你发现自己还没有做到，我希望，你有勇气重头再来。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的精神家园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初级-字符
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-14 17:27:00 / 修改时间：09:34:23" itemprop="dateCreated datePublished" datetime="2018-11-14T17:27:00Z">2018-11-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="反转字符"><a href="#反转字符" class="headerlink" title="反转字符"></a>反转字符</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reverseString = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = s.split(<span class="string">''</span>)</span><br><span class="line">    arr.reverse()</span><br><span class="line">    s = arr.join(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="颠倒整数"><a href="#颠倒整数" class="headerlink" title="颠倒整数"></a>颠倒整数</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reverse = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    x = x.toString()</span><br><span class="line">    x = x.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">var</span> n = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">if</span>(x[<span class="number">0</span>] == <span class="string">'-'</span>) &#123;</span><br><span class="line">        x.splice(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">        n = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    x.reverse()</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="literal">true</span>) x.splice(<span class="number">0</span>,<span class="number">0</span>,<span class="string">'-'</span>)</span><br><span class="line">    x = x.join(<span class="string">''</span>)</span><br><span class="line">    x = <span class="built_in">parseInt</span>(x)</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">31</span>)<span class="number">-1</span> || x &lt; -<span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">31</span>)<span class="number">-1</span>) x = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="字符串中的第一个唯一字符"><a href="#字符串中的第一个唯一字符" class="headerlink" title="字符串中的第一个唯一字符"></a>字符串中的第一个唯一字符</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> firstUniqChar = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    s = s.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;s.length;i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> n = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;s.length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i == j) <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span>(s[i] == s[j]) &#123;</span><br><span class="line">                n = <span class="literal">false</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(j == s.length &amp;&amp; n == <span class="literal">true</span>) <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i == s.length &amp;&amp; n == <span class="literal">false</span> || (s.length == <span class="number">0</span>)) i = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">return</span> i</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="有效的字母异位词"><a href="#有效的字母异位词" class="headerlink" title="有效的字母异位词"></a>有效的字母异位词</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isAnagram = <span class="function"><span class="keyword">function</span>(<span class="params">s, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj= &#123;&#125;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span>(s.length ==t.length) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;s.length;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] <span class="keyword">in</span> obj) obj[s[i]]++</span><br><span class="line">            <span class="keyword">else</span> obj[s[i]] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span>(t[i] <span class="keyword">in</span> obj) obj[t[i]]--</span><br><span class="line">            <span class="keyword">else</span> obj[t[i]] = <span class="number">-1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">            <span class="keyword">if</span>(obj[key] != <span class="number">0</span>) n = <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> n = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="验证回文字符串"><a href="#验证回文字符串" class="headerlink" title="验证回文字符串"></a>验证回文字符串</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isPalindrome = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="literal">false</span></span><br><span class="line">    s = s.replace(<span class="regexp">/[^a-zA-Z0-9]/g</span>,<span class="string">''</span>)</span><br><span class="line">    s = s.toLowerCase()</span><br><span class="line">    <span class="keyword">var</span> a = s.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">if</span>(s == a) n = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="字符串转整数-atoi"><a href="#字符串转整数-atoi" class="headerlink" title="字符串转整数 (atoi)"></a>字符串转整数 (atoi)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myAtoi = <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = <span class="built_in">parseInt</span>(str) || <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span>(arr &gt;= <span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">31</span>)) <span class="keyword">return</span> <span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">31</span>) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(arr &lt; -<span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">31</span>)) <span class="keyword">return</span> -<span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">31</span>)</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> arr</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="实现strStr"><a href="#实现strStr" class="headerlink" title="实现strStr()"></a>实现strStr()</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strStr = <span class="function"><span class="keyword">function</span>(<span class="params">haystack, needle</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> haystack.indexOf(needle)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="报数"><a href="#报数" class="headerlink" title="报数"></a>报数</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> countAndSay = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _str = <span class="string">'1'</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        _str = _str.match(<span class="regexp">/1+|2+|3+|4+|5+|6+|7+|8+|9+/g</span>).map(<span class="function"><span class="params">v</span>=&gt;</span><span class="string">''</span>+v.length+v[<span class="number">0</span>]).join(<span class="string">''</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _str</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longestCommonPrefix = <span class="function"><span class="keyword">function</span>(<span class="params">strs</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> min = strs[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;strs.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(strs[i].length &lt; min.length) min = strs[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> _arr = <span class="function">(<span class="params">min||<span class="string">''</span></span>).<span class="params">split</span>(<span class="params"><span class="string">''</span></span>).<span class="params">map</span>(<span class="params">(v,i</span>)=&gt;</span>min.slice(<span class="number">0</span>,i+<span class="number">1</span>)).reverse()</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;_arr.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j=<span class="number">0</span>;j&lt;strs.length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(strs[j].indexOf(_arr[i]) != <span class="number">0</span>) &#123;</span><br><span class="line">                _arr.shift()</span><br><span class="line">                i--</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _arr[<span class="number">0</span>] || <span class="string">''</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="回文链表"><a href="#回文链表" class="headerlink" title="回文链表"></a>回文链表</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reverse = <span class="function"><span class="keyword">function</span>(<span class="params">head</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = head</span><br><span class="line">    <span class="keyword">if</span>(head != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> b = head.next</span><br><span class="line">        <span class="keyword">while</span>(b) &#123;</span><br><span class="line">            a.next = b.next</span><br><span class="line">            b.next = head</span><br><span class="line">            head = b</span><br><span class="line">            b = a.next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> head = []</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> isEqual = <span class="function"><span class="keyword">function</span>(<span class="params">l1,l2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l1 != <span class="literal">null</span> &amp;&amp; l2 != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (l1.val != l2.val) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        l1 = l1.next</span><br><span class="line">        l2 = l2.next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cut = <span class="function"><span class="keyword">function</span>(<span class="params">head,cutNode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(head.next != cutNode) head = head.next</span><br><span class="line">    head.next = <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> isPalindrome = <span class="function"><span class="keyword">function</span>(<span class="params">head</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">var</span> fast = head.next<span class="comment">//链表中注意这种两个指针遍历的思想</span></span><br><span class="line">    <span class="keyword">var</span> slow = head</span><br><span class="line">    <span class="keyword">while</span>(fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>) &#123;</span><br><span class="line">        fast = fast.next.next</span><br><span class="line">        slow = slow.next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (fast != <span class="literal">null</span>) slow = slow.next  <span class="comment">// 偶数节点，让 slow 指向下一个节点</span></span><br><span class="line">    cut(head, slow)<span class="comment">//这里我也不容易想到                     // 切成两个链表</span></span><br><span class="line">    <span class="keyword">return</span> isEqual(head, reverse(slow))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="环形链表"><a href="#环形链表" class="headerlink" title="环形链表"></a>环形链表</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//思路：双指针，一个1步/次，一个2步/次，若没有环，则两者不会碰到，若有环，则必然会碰到。</span></span><br><span class="line"><span class="keyword">var</span> hasCycle = <span class="function"><span class="keyword">function</span>(<span class="params">head</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!head || !head.next) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    <span class="keyword">var</span> slow = head</span><br><span class="line">    <span class="keyword">var</span> fast = head.next</span><br><span class="line">    <span class="keyword">while</span>(fast &amp;&amp; fast.next) &#123;</span><br><span class="line">        <span class="keyword">if</span>(fast.next == slow) <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        slow = slow.next</span><br><span class="line">        fast = fast.next.next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/14/初级-数组/" rel="next" title="初级-数组">
+                <i class="fa fa-chevron-left"></i> 初级-数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Airy</p>
+              <p class="site-description motion-element" itemprop="description">如果你发现自己还没有做到，我希望，你有勇气重头再来。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反转字符"><span class="nav-number">1.</span> <span class="nav-text">反转字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#颠倒整数"><span class="nav-number">2.</span> <span class="nav-text">颠倒整数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串中的第一个唯一字符"><span class="nav-number">3.</span> <span class="nav-text">字符串中的第一个唯一字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有效的字母异位词"><span class="nav-number">4.</span> <span class="nav-text">有效的字母异位词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#验证回文字符串"><span class="nav-number">5.</span> <span class="nav-text">验证回文字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串转整数-atoi"><span class="nav-number">6.</span> <span class="nav-text">字符串转整数 (atoi)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现strStr"><span class="nav-number">7.</span> <span class="nav-text">实现strStr()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#报数"><span class="nav-number">8.</span> <span class="nav-text">报数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最长公共前缀"><span class="nav-number">9.</span> <span class="nav-text">最长公共前缀</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回文链表"><span class="nav-number">10.</span> <span class="nav-text">回文链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环形链表"><span class="nav-number">11.</span> <span class="nav-text">环形链表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Airy</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
