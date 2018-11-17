@@ -108,24 +108,23 @@
 
 
 
-  <meta name="description" content="背景单线程的JavaScriptJavaScript作为浏览器脚本语言，主要用途是和操作DOM以及与用户互动。在操作DOM时，多线程很容易造成命令的矛盾（比如一个线程删除DOM，一个增加DOM），所以JavaScript被设计成单线程。 需要异步的JavaScript由于JavaScript的单线程特性，如果只能同步执行，如果遇到耗时的任务，就会对后续任务造成阻塞，所以JavaScript需要存在">
-<meta property="og:type" content="article">
-<meta property="og:title" content="有关异步">
-<meta property="og:url" content="http://yoursite.com/2018/08/18/有关异步/index.html">
+  <meta name="description" content="如果你发现自己还没有做到，我希望，你有勇气重头再来。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="我的精神家园">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="我的精神家园">
-<meta property="og:description" content="背景单线程的JavaScriptJavaScript作为浏览器脚本语言，主要用途是和操作DOM以及与用户互动。在操作DOM时，多线程很容易造成命令的矛盾（比如一个线程删除DOM，一个增加DOM），所以JavaScript被设计成单线程。 需要异步的JavaScript由于JavaScript的单线程特性，如果只能同步执行，如果遇到耗时的任务，就会对后续任务造成阻塞，所以JavaScript需要存在">
+<meta property="og:description" content="如果你发现自己还没有做到，我希望，你有勇气重头再来。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-31T03:51:35.416Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有关异步">
-<meta name="twitter:description" content="背景单线程的JavaScriptJavaScript作为浏览器脚本语言，主要用途是和操作DOM以及与用户互动。在操作DOM时，多线程很容易造成命令的矛盾（比如一个线程删除DOM，一个增加DOM），所以JavaScript被设计成单线程。 需要异步的JavaScript由于JavaScript的单线程特性，如果只能同步执行，如果遇到耗时的任务，就会对后续任务造成阻塞，所以JavaScript需要存在">
+<meta name="twitter:title" content="我的精神家园">
+<meta name="twitter:description" content="如果你发现自己还没有做到，我希望，你有勇气重头再来。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/18/有关异步/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
@@ -135,7 +134,7 @@
   };
 </script>
 
-  <title>有关异步 | 我的精神家园</title>
+  <title>我的精神家园</title>
   
 
 
@@ -182,7 +181,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,9 +279,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -313,7 +313,11 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">有关异步
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/有关异步/" itemprop="url">
+                  有关异步
+                </a>
               
             
           </h1>
@@ -406,7 +410,9 @@
       
 
       
-        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="单线程的JavaScript"><a href="#单线程的JavaScript" class="headerlink" title="单线程的JavaScript"></a>单线程的JavaScript</h2><p>JavaScript作为浏览器脚本语言，主要用途是和操作DOM以及与用户互动。在操作DOM时，多线程很容易造成命令的矛盾（比如一个线程删除DOM，一个增加DOM），所以JavaScript被设计成单线程。</p>
+        
+          
+            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="单线程的JavaScript"><a href="#单线程的JavaScript" class="headerlink" title="单线程的JavaScript"></a>单线程的JavaScript</h2><p>JavaScript作为浏览器脚本语言，主要用途是和操作DOM以及与用户互动。在操作DOM时，多线程很容易造成命令的矛盾（比如一个线程删除DOM，一个增加DOM），所以JavaScript被设计成单线程。</p>
 <h2 id="需要异步的JavaScript"><a href="#需要异步的JavaScript" class="headerlink" title="需要异步的JavaScript"></a>需要异步的JavaScript</h2><p>由于JavaScript的单线程特性，如果只能同步执行，如果遇到耗时的任务，就会对后续任务造成阻塞，所以JavaScript需要存在异步执行。</p>
 <hr>
 <h1 id="概念辨析"><a href="#概念辨析" class="headerlink" title="概念辨析"></a>概念辨析</h1><ul>
@@ -456,6 +462,8 @@
 <p>上述代码直接摘自阮大神的教程。从上面代码可以看到，采用 Promises 以后，程序流程变得非常清楚，十分易读。总的来说，传统的回调函数写法使得代码混成一团，变得横向发展而不是向下发展。Promise 就是解决这个问题，使得异步流程可以写成同步流程。<br>有关promise的具体语法就不在这赘述了。有一点需要注意：Promise 的回调函数不是正常的异步任务，而是微任务（microtask）。它们的区别在于，正常任务追加到下一轮事件循环，微任务追加到本轮事件循环。这意味着，微任务的执行时间一定早于正常任务。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function() &#123;</span><br><span class="line">console.log(1);</span><br><span class="line">&#125;, 0);</span><br><span class="line">new Promise(function (resolve, reject) &#123;</span><br><span class="line">resolve(2);</span><br><span class="line">&#125;).then(console.log);</span><br><span class="line">console.log(3);</span><br></pre></td></tr></table></figure></p>
 <p>上述代码的输出结果为3、2、1，这说明then的回调函数的执行时间，早于setTimeout(fn, 0)。因为then是本轮事件循环执行，setTimeout(fn, 0)在下一轮事件循环开始时执行。</p>
 
+          
+        
       
     </div>
 
@@ -475,28 +483,12 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/26/原型与继承/" rel="prev" title="原型与继承">
-                原型与继承 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -506,15 +498,18 @@
   </article>
 
 
-  </div>
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-
-
 
         </div>
         
@@ -535,17 +530,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -607,22 +593,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单线程的JavaScript"><span class="nav-number">1.1.</span> <span class="nav-text">单线程的JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要异步的JavaScript"><span class="nav-number">1.2.</span> <span class="nav-text">需要异步的JavaScript</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念辨析"><span class="nav-number">2.</span> <span class="nav-text">概念辨析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript的执行机制"><span class="nav-number">3.</span> <span class="nav-text">JavaScript的执行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行机制"><span class="nav-number">3.1.</span> <span class="nav-text">执行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行机制中涉及到的重要概念"><span class="nav-number">3.2.</span> <span class="nav-text">执行机制中涉及到的重要概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步模式"><span class="nav-number">4.</span> <span class="nav-text">异步模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回调函数"><span class="nav-number">4.1.</span> <span class="nav-text">回调函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解这种思维"><span class="nav-number">4.1.1.</span> <span class="nav-text">理解这种思维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调函数的优缺点"><span class="nav-number">4.1.2.</span> <span class="nav-text">回调函数的优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件监听"><span class="nav-number">4.2.</span> <span class="nav-text">事件监听</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布-订阅"><span class="nav-number">4.3.</span> <span class="nav-text">发布/订阅</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#promise"><span class="nav-number">4.4.</span> <span class="nav-text">promise</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -753,10 +723,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
-
-
 
   
 
